@@ -1,1 +1,12 @@
-Hello <%= ENV["RIZON_MAPPING"] %>
+[DEFAULT]
+irc_port: 6667
+irc_ssl: false
+reddit_agent: <%= ENV['REDDIT_AGENT'] %>
+
+[IRC]
+irc_name: <%= ENV['IRC_USERNAME'] %>
+irc_pswd: <%= ENV['IRC_PASSWORD'] %>
+irc_host: <%= ENV['IRC_HOST'] %>
+irc_port: <%= ENV['IRC_PORT'] %>
+irc_ssl: <%= ENV['IRC_SSL'] %>
+mapping: <%= ENV['IRC_MAPPING'] %>
