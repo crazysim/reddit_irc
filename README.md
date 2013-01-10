@@ -32,4 +32,5 @@ This version of reddit_irc has been augmented with a ruby script to generate
 ini files from environment variables. Unfortunately it only supports one
 network per app at a time with this scheme. Set the corresponding environment
 variables as mentioned in reddit_irc.ini.erb and scale it to one worker on
-Heroku to have the bot run on Heroku.
+Heroku to have the bot run on Heroku. If you have multiple networks, just run
+multiple apps.
