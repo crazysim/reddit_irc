@@ -6,7 +6,7 @@ import sys
 import time
 from ircutils import bot
 from six import text_type
-from six.moves import configparser
+from six.moves import configparser, html_parser
 
 RE_WHITESPACE = re.compile('\s+', re.UNICODE)
 debug = True
@@ -78,10 +78,12 @@ class RedditUpdater(object):
             submissions = submissions[-self.MSG_LIMIT:]
         self.previous = submissions[0]
         for submission in reversed(submissions):
+            parser = html_parser.HTMLParser()
             msg = (self.MSG_FORMAT % (submission.short_link,
                                       text_type(submission.subreddit),
                                       text_type(submission.author),
-                                      submission.title)).encode('utf-8')
+                                      parser.unescape(submission.title)
+                                      )).encode('utf-8')
             msg = re.sub('\s+', ' ', msg).strip()
             if debug:
                 print(msg)
